@@ -1,0 +1,46 @@
+<!-- by Vincent Claes cteq.eu -->
+</html>
+<head>
+<title>Cement strength prediction</title>
+</head>
+	<body>
+	<h1>Cement Strength Calculation Requested</h1>
+		{% block content %}{% endblock %}
+		<form action="/start" method="post" novalidate>
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.cement.label }}<br>
+				{{ form.cement(size=32) }}
+			</p>
+			<p>
+				{{ form.slag.label }}<br>
+				{{ form.slag(size=32) }}
+			</p>
+			<p>
+				{{ form.ash.label}}<br>
+				{{ form.ash(size=32)}}
+			</p>
+			<p>
+				{{ form.water.label}}<br>
+				{{ form.water(size=32)}}
+			</p>
+			<p>
+				{{ form.superplastic.label}}<br>
+				{{ form.superplastic(size=32)}}
+			</p>
+			<p>
+				{{ form.coarseagg.label }}<br>
+				{{ form.coarseagg(size=32) }}
+			</p>
+			<p>
+				{{ form.fineagg.label }}<br>
+				{{ form.fineagg(size=32) }}
+			</p>
+			<p>
+				{{ form.age.label }}<br>
+				{{ form.age(size=32) }}
+			</p>
+			<p>{{ form.submit() }}</p>
+		</form><br>
+	</body>
+</html>
