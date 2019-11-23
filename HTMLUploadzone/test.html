@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+	text-align: center;
+	font-family: arial;
+	font-size: 25px;
+}
+form {
+	border: 2px solid black;
+	outline: #4CAF50 solid 10px;
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+}
+</style>
+<body>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select CSV file to upload:</br>
+    <input type="file" name="fileToUpload" id="fileToUpload"></br>
+    <input type="submit" value="Upload CSV" name="submit">
+</form>
+
+</body>
+</html>
