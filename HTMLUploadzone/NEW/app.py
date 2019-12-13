@@ -18,7 +18,7 @@ app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
 app.config.update(
     UPLOADED_PATH=os.path.join(basedir, 'uploads'),
     # Flask-Dropzone config:
-    DROPZONE_ALLOWED_FILE_TYPE='.csv, .csV, .cSv, .Csv, .CsV, .CSv, .cSV, .CSV',
+    DROPZONE_ALLOWED_FILE_TYPE='.csv',
     DROPZONE_MAX_FILE_SIZE=3,
     DROPZONE_MAX_FILES=30,
 )
@@ -30,7 +30,7 @@ dropzone = Dropzone(app)
 def upload():
     if request.method == 'POST':
         f = request.files.get('file')
-        f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
+        f.save(os.path.join(app.config['UPLOADED_PATH'],"current.csv"))
     return render_template('index.html')
 
 
