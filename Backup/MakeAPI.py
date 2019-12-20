@@ -31,12 +31,15 @@ from sklearn.metrics import classification_report
 from sklearn.linear_model import LinearRegression
 
 
+with open('trainVar.pkl', 'rb') as f:
+    trainVar = pickle.load(f)
+
 # In[5]:
 
 
-dataX = data[['cement','slag','ash','water','superplastic','coarseagg','fineagg','strength']]
-datay = data[['age']]
-
+dataX = data
+datay = data[trainVar]
+dataX.drop(datay,axis=1,inplace=True)
 
 # ##### datay is the variable to be calculated
 
