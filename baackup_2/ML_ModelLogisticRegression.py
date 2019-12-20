@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[18]:
 
 
 import pandas as pd
+import numpy as np
 
 
-# In[2]:
+# In[19]:
 
 
-data = pd.read_csv("uploads/current.csv")
+data = pd.read_csv("wisc_bc_data.csv")
+##data = pd.read_csv("uploads/current.csv")
 
 
-# In[3]:
+# In[20]:
 
 
 list(data.columns)
@@ -21,78 +23,141 @@ list(data.columns)
 
 # # Return from HTML after selection
 
-# In[4]:
+# In[21]:
 
 
-import pickle
-import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
-from sklearn.linear_model import LinearRegression
+import pickle
 
 
+# imported variables from html
+
+# In[22]:
+
+
+##selection = ['points_mean','dimension_mean','smoothness_se','symmetry_se','radius_worst','perimeter_worst']
 with open('trainVar.pkl', 'rb') as f:
     trainVar = pickle.load(f)
 
-# In[5]:
+
+# set imported data to dataX var
+
+# In[23]:
 
 
-dataX = data
-datay = data[trainVar]
-dataX.drop(trainVar,axis=1,inplace=True)
+dataX = data##[selection]
+datay = trainVar
 
-# ##### datay is the variable to be calculated
+# get deferent names fer true or false (moet nog gedaan worden!!!)
 
-# In[6]:
-
+# In[ ]:
 
 
-# In[7]:
 
 
-data.columns
+
+# In[24]:
 
 
-# In[8]:
+#print(data[trainVar])
 
 
-X_train, X_test, y_train, y_test = train_test_split(dataX, datay, test_size=0.25, random_state=101)
+# ## replace trainvar to 0 and 1 
+
+# In[25]:
 
 
-# # Linear Regression Model
-
-# In[9]:
-
-
-lm = LinearRegression()
+replace = pd.get_dummies(data[trainVar],drop_first=True)
+data.drop(trainVar,axis=1,inplace=True)
+data = pd.concat([data,replace],axis=1)
+datay = data.iloc[:,-1]
 
 
-# In[10]:
+# In[26]:
 
 
-lm.fit(X_train,y_train)
+#print(datay)
 
 
-# In[11]:
+# ### set name of 1/0 column in var
+
+# In[27]:
 
 
-predictions = lm.predict(X_test)
+TrainName = data.columns[-1]
 
 
-# # Create API files
+# ### drop 1/0 column from dataset
 
-# In[12]:
+# In[28]:
+
+
+data.drop(data.columns[[-1,]], axis=1, inplace=True)
+
+
+# ### write TrainName to .pkl file
+
+# In[29]:
+
+
+with open('LogRegTrainName.pkl', 'wb') as f:
+    pickle.dump(TrainName, f)
+
+
+# ###     
+
+# In[30]:
+
+
+X_train, X_test, y_train, y_test = train_test_split(dataX, datay, test_size=0.25, random_state=42)
+
+
+# # logistic regresion
+
+# In[31]:
+
+
+logmodel = LogisticRegression()
+logmodel.fit(X_train,y_train)
+
+
+# In[32]:
+
+
+predictions = logmodel.predict(X_test)
+
+
+# ## classiffication report
+# 
+
+# In[33]:
+
+
+#print(classification_report(y_test,predictions))
+
+
+# In[ ]:
+
+
+
+
+
+# In[34]:
+
+
+##pickle.dump(logmodel, open("model.pkl","wb"))
+
+
+
 
 
 import os
 import shutil
 
-for coly in datay.columns:
-    namePredict = coly
 
-
-# In[13]:
-
+namePredict = trainVar
 
 nameFolder = './API_CURRENT'
 
@@ -101,13 +166,19 @@ if not os.path.isdir(nameFolder) :
 if not os.path.isdir(nameFolder + '/templates') :    
     os.mkdir(nameFolder + '/templates')
 
-pickle.dump(lm, open(nameFolder + "/model.pkl","wb"))
+pickle.dump(logmodel, open(nameFolder + "/model.pkl","wb"))
 
 
-# In[14]:
 
 
-#Creating index.html
+
+
+
+
+
+
+
+Creating index.html
 strINDEX = "<!-- By Jarni Vanmal, Bram Plessers and Sven Musters -->" + "\n"
 strINDEX = strINDEX +"<!DOCTYPE html>" + "\n"
 strINDEX = strINDEX + "<html>" + "\n"
@@ -244,8 +315,3 @@ strProc = "web: gunicorn PXLApp:app"
 fileIndex = open(nameFolder + "/procfile", 'w')
 fileIndex.write(strProc)
 fileIndex.close();
-
-
-
-
-
