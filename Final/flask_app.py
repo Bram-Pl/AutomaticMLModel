@@ -29,11 +29,11 @@ def test():
 	with open('trainVar.pkl', 'wb') as f:
 		pickle.dump(getData, f)
 	if (getModel == 'Lineair Regression Model' ) :
-		runpy.run_module(mod_name='models/createLinear')
+		runpy.run_module(mod_name='createLinear')
 		time.sleep( 1 )
 		return( "Building Lineair Regression Model... https://apicurrent.herokuapp.com/")
 	elif (getModel == 'Logistic Regression Model' ) :
-		runpy.run_module(mod_name='models/createLogistic')
+		runpy.run_module(mod_name='createLogistic')
 		time.sleep( 1 )
 		return( "Building Logistic Regression Model... https://apicurrent.herokuapp.com/")
 	else:

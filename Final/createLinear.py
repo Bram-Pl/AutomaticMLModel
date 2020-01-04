@@ -229,6 +229,15 @@ fileIndex.write(strProc)
 fileIndex.close();
 
 
+#github pushing
+import subprocess as cmd
+
+cp = cmd.run("git -C API_CURRENT add .", check=True, shell=True)
+
+message = "Update_API"
+
+cp = cmd.run(f"git -C API_CURRENT commit -m '{message}'", check=True, shell=True)
+cp = cmd.run("git -C API_CURRENT push -u origin master -f", check=True, shell=True)
 
 
 

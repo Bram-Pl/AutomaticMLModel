@@ -11,7 +11,7 @@ import numpy as np
 # In[19]:
 
 
-data = pd.read_csv("wisc_bc_data.csv")
+data = pd.read_csv("uploads/current.csv")
 ##data = pd.read_csv("uploads/current.csv")
 
 
@@ -103,7 +103,7 @@ data.drop(data.columns[[-1,]], axis=1, inplace=True)
 
 
 with open('LogRegTrainName.pkl', 'wb') as f:
-    pickle.dump(TrainName, f)
+    pickle.dump(API_CURRENT/TrainName, f)
 
 
 # ###     
@@ -178,7 +178,7 @@ pickle.dump(logmodel, open(nameFolder + "/model.pkl","wb"))
 
 
 
-Creating index.html
+#Creating index.html
 strINDEX = "<!-- By Jarni Vanmal, Bram Plessers and Sven Musters -->" + "\n"
 strINDEX = strINDEX +"<!DOCTYPE html>" + "\n"
 strINDEX = strINDEX + "<html>" + "\n"
