@@ -31,9 +31,11 @@ def test():
 	if (getModel == 'Lineair Regression Model' ) :
 		runpy.run_module(mod_name='models/createLinear')
 		time.sleep( 1 )
-		runpy.run_module(mod_name='/API_CURRENT/API')
+		return( "Building Lineair Regression Model... https://apicurrent.herokuapp.com/")
 	elif (getModel == 'Logistic Regression Model' ) :
-		return( "2 Selected model is " + str(getModel) + ", and column " + str(getData) )
+		runpy.run_module(mod_name='models/createLogistic')
+		time.sleep( 1 )
+		return( "Building Logistic Regression Model... https://apicurrent.herokuapp.com/")
 	else:
 		return( "Error, please try again" )
 
