@@ -310,8 +310,8 @@ fileIndex.close();
 
 
 #Creating procfile
-strProc = "web: gunicorn PXLApp:app"
+strProc = "web: gunicorn API:app"
 
-fileIndex = open(nameFolder + "/procfile", 'w')
+fileIndex = open(nameFolder + "/Procfile", 'w')
 fileIndex.write(strProc)
 fileIndex.close();
