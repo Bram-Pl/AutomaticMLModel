@@ -31,7 +31,7 @@ def upload():
     if request.method == 'POST':
         f = request.files.get('file')
         f.save(os.path.join(app.config['UPLOADED_PATH'],"current.csv"))
-    return data()
+    return render_template('index.html')
 
 @app.route('/')#this needs to be the upload csv
 @app.route('/data')#second page 
