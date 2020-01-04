@@ -26,14 +26,14 @@ app.config.update(
 
 dropzone = Dropzone(app)
 
+@app.route('/')#this needs to be the upload csv
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
-    if request.method == 'POST':
-        f = request.files.get('file')
-        f.save(os.path.join(app.config['UPLOADED_PATH'],"current.csv"))
-    return render_template('index.html')
+	if request.method == 'POST':
+		f = request.files.get('file')
+		f.save(os.path.join(app.config['UPLOADED_PATH'],"current.csv"))
+	return render_template('index.html')
 
-@app.route('/')#this needs to be the upload csv
 @app.route('/data')#second page 
 def data():
 	data = pd.read_csv("uploads/current.csv")
