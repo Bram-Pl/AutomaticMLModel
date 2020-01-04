@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h3{
+	text-align: center;
+	font-family:verdana;
+}
+#upload-btn{
+	background-color: black;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border: 10px line rgb(71, 207, 115);
+	font-size: 16px;
+}
+#box{
+	margin-top:20px;
+	text-align: center;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>ML Model Generation</title>
+  {{ dropzone.load_css() }}
+  {{ dropzone.style('background: rgb(71, 207, 115);
+    border-radius: 5px;
+    border: 10px line rgb(71, 207, 115);
+    border-image: none;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+	color:white;;
+	') 
+	}}
+</head>
+<body>
+<h3>Upload your "*.csv" file below<br>and the file will be used for<br>a machine learning model.<br></h3>
+  {{ dropzone.create(action='upload') }}
+  <div id="box">
+  <button id="upload-btn">Upload</button>
+  </div>
+  {{ dropzone.load_js() }}
+  {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+                     custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 20,') }}
+</body>
+</html>
