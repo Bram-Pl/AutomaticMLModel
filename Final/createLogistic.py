@@ -155,6 +155,10 @@ predictions = logmodel.predict(X_test)
 
 import os
 import shutil
+from datetime import datetime
+# current date and time
+now = datetime.now()
+timestamp = datetime.timestamp(now)
 
 
 namePredict = trainVar
@@ -180,6 +184,7 @@ pickle.dump(logmodel, open(nameFolder + "/model.pkl","wb"))
 
 #Creating index.html
 strINDEX = "<!-- By Jarni Vanmal, Bram Plessers and Sven Musters -->" + "\n"
+strINDEX = "<!-- Created on:" + timestamp + " -->" + "\n"
 strINDEX = strINDEX +"<!DOCTYPE html>" + "\n"
 strINDEX = strINDEX + "<html>" + "\n"
 strINDEX = strINDEX + "<head>" + "\n"
