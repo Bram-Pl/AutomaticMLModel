@@ -96,7 +96,7 @@ pickle.dump(lm, open(nameFolder + "/model.pkl","wb"))
 
 #Creating index.html
 strINDEX = "<!-- By Jarni Vanmal, Bram Plessers and Sven Musters -->" + "\n"
-strINDEX = "<!-- Created on:" + timestamp + " -->" + "\n"
+strINDEX = "<!-- Created on:" + str(timestamp) + " -->" + "\n"
 strINDEX = strINDEX +"<!DOCTYPE html>" + "\n"
 strINDEX = strINDEX + "<html>" + "\n"
 strINDEX = strINDEX + "<head>" + "\n"
