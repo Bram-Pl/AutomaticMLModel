@@ -6,8 +6,32 @@ import wtforms
 import pickle
 import runpy
 import time
+import os
+from flask import Flask, render_template, request
+from flask_dropzone import Dropzone
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+
+app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
+
+app.config.update(
+    UPLOADED_PATH=os.path.join(basedir, 'uploads'),
+    # Flask-Dropzone config:
+    DROPZONE_ALLOWED_FILE_TYPE='.csv',
+    DROPZONE_MAX_FILE_SIZE=3,
+    DROPZONE_MAX_FILES=30,
+)
+
+dropzone = Dropzone(app)
+
+@app.route('/upload', methods=['POST', 'GET'])
+def upload():
+    if request.method == 'POST':
+        f = request.files.get('file')
+        f.save(os.path.join(app.config['UPLOADED_PATH'],"current.csv"))
+    return data()
 
 @app.route('/')#this needs to be the upload csv
 @app.route('/data')#second page 
