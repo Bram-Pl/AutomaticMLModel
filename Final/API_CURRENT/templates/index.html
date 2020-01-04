@@ -1,0 +1,55 @@
+<!-- By Jarni Vanmal, Bram Plessers and Sven Musters -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Predict age</title>
+</head>
+<body>
+	<h1>Predict age</h1>
+	{% block content %}{% endblock %}
+	<form action="/start" method="post" novalidate>
+	{{ form.hidden_tag() }}
+		<p>
+		{{ form.cement.label }}<br>
+		{{ form.cement(size=32) }}
+		</p>
+
+		<p>
+		{{ form.slag.label }}<br>
+		{{ form.slag(size=32) }}
+		</p>
+
+		<p>
+		{{ form.ash.label }}<br>
+		{{ form.ash(size=32) }}
+		</p>
+
+		<p>
+		{{ form.water.label }}<br>
+		{{ form.water(size=32) }}
+		</p>
+
+		<p>
+		{{ form.superplastic.label }}<br>
+		{{ form.superplastic(size=32) }}
+		</p>
+
+		<p>
+		{{ form.coarseagg.label }}<br>
+		{{ form.coarseagg(size=32) }}
+		</p>
+
+		<p>
+		{{ form.fineagg.label }}<br>
+		{{ form.fineagg(size=32) }}
+		</p>
+
+		<p>
+		{{ form.strength.label }}<br>
+		{{ form.strength(size=32) }}
+		</p>
+
+		<p>{{form.submit()}}</p>
+	</form>
+</body>
+</html>
