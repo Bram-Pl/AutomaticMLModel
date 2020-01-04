@@ -102,8 +102,8 @@ data.drop(data.columns[[-1,]], axis=1, inplace=True)
 # In[29]:
 
 
-with open('LogRegTrainName.pkl', 'wb') as f:
-    pickle.dump("API_CURRENT/TrainName", f)
+with open('API_CURRENT/LogRegTrainName.pkl', 'wb') as f:
+    pickle.dump(TrainName, f)
 
 
 # ###     
@@ -264,6 +264,10 @@ strPXLApp = strPXLApp + "\n"
 strPXLApp = strPXLApp + "model_pkl = pickle.load(open('model.pkl','rb'))" + "\n"
 strPXLApp = strPXLApp + "\n"
 
+strPXLApp = strPXLApp + "with open('LogRegTrainName.pkl', 'rb') as f:" "\n"
+strPXLApp = strPXLApp + "\t" + "TrainName = pickle.load(f)" "\n"
+strPXLApp = strPXLApp + "\n"
+
 strPXLApp = strPXLApp + "@app.route('/',methods=['GET','POST'])" + "\n"
 strPXLApp = strPXLApp + "@app.route('/start',methods=['GET','POST'])" + "\n"
 strPXLApp = strPXLApp + "def start():" + "\n"
@@ -276,6 +280,12 @@ for colx in dataX.columns:
     strPXLApp = strPXLApp + "\t\t" + "test_data_f['" + colx + "']=form."+ colx + ".data" +"\n"
 strPXLApp = strPXLApp + "\t\t" + "data=test_data_f" + "\n"
 strPXLApp = strPXLApp + "\t\t" + "result=model_pkl.predict(pd.DataFrame(pd.DataFrame(data, index=[0])))[0]" + "\n"    
+strPXLApp = strPXLApp + "\n"
+strPXLApp = strPXLApp + "\t\t" + "if result == 1:" + "\n"  
+strPXLApp = strPXLApp + "\t\t\t" + "result = TrainName" + "\n"  
+strPXLApp = strPXLApp + "\t\t" + "elif result == 0:" + "\n"  
+strPXLApp = strPXLApp + "\t\t\t" + "result = 'Not ' + TrainName" + "\n"  
+strPXLApp = strPXLApp + "\n"
 strPXLApp = strPXLApp + "\t\t" + "return render_template('result.html',title='model', form=form, " + namePredict + "=result)" + "\n"
 strPXLApp = strPXLApp + "\t" + "return render_template('index.html', title='model', form=form)" + "\n"
 strPXLApp = strPXLApp + "\n"
