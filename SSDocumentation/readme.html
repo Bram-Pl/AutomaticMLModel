@@ -1,0 +1,232 @@
+<html>
+<html>
+<link href="https://fonts.googleapis.com/css?family=KoHo" rel="stylesheet">
+<head>
+    <title>Smart Systems: Automatic ML Model Training and Deployment</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<style>
+    nav {
+        position: center;
+        background-color: #4683bd;
+        text-align: center;
+        font-family: 'KoHo', sans-serif;
+        font-size: 22px;
+        width: 100%;
+        color: white;
+    }
+	.footer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: #4683bd;
+		color: white;
+		text-align: center;
+		font-family: 'KoHo', sans-serif;
+		font-size: 14px;
+	}
+    nav ul{
+        margin: 0;
+        padding: 0;
+    }
+    nav h1{
+        margin: 0;
+        padding: 20px;
+    }
+    body {
+        position: relative;
+        margin: 0;
+        padding: 0;
+		max-width: 100%;
+		overflow-x: hidden;
+    }
+    nav a {
+        font-size: 20px;
+        font-family: 'KoHo', sans-serif;
+    }
+    nav ul {
+        list-style-type: none;
+        overflow: hidden;
+        background-color: #6eabe6;
+    }
+    nav li {
+        float: left;
+        margin-top: 5px;
+    }
+    nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    nav li a:hover {
+        background-color: #c13e4f;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px
+    }
+    .headerBody {
+        font-size: 20px;
+        font-family: 'KoHo', sans-serif;
+        text-align: center;
+    }
+    h2 {
+        font-size: 20px;
+        font-family: 'KoHo', sans-serif;
+        text-align: center;
+    }
+	h3 {
+        font-size: 16px;
+        font-family: 'KoHo', sans-serif;
+        text-align: center;
+    }
+    .headerBody h3 {
+        font-size: 30px;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 110%;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent black transparent transparent;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+    table, th, td {
+        border: 0px;
+        text-align: left;
+        margin-left:25%;
+        margin-right:auto;
+        margin-bottom: 75px;
+        margin-top: 0;
+		font-family: 'KoHo', sans-serif;
+    }
+    .table-wrapper
+    {
+        border: black;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: 10px;
+        width: fit-content;
+        height: 355px;
+        overflow: auto;
+    }
+    .tester
+    {
+        width:1800px;
+        height:450px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+	img
+	{
+		margin-left: auto;
+	}
+	.center {
+		display: block;
+		margin-left: 3%;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 60%;
+		border : 1px;
+	}
+	.middle {
+		display: block;
+		margin-left: 0;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 100%;
+		border : 1px;
+		color: white;
+		background-color: #4683bd;
+	}
+</style>
+
+<header>
+    <nav style="margin-bottom:20px">
+        <ul>
+		<li style="background-color: #4683bd; border-top-left-radius: 20px; border-top-right-radius: 20px"><a>ML Model</a></li>
+        </ul>
+        
+		<h1>Smart Systems:<br>Automatic ML Model Training and Deployment</h1>
+		<h2 style="margin-top:2px">Follow the instructions below to <u>start</u> the <u>ML Model training and Deployment.</u></h2>
+    </nav>
+</header>
+
+<body>
+    <h2>Welcome to the readme region for the Automatic ML Model Training and Deployment.</h2>
+	<table style="width:80%">
+	<tr>
+		<th style="font-size:25px">Instructions</th>
+	<tr>
+		<td><u>Step 1:</u> Create a new git repo on github (API_CURRENT).</td>
+	</tr>
+	<tr>
+		<td><u>Step 2:</u> Create a new Heroku app(apicurrent), go to the settings of the app and connect your github account to the Heroku app and enable Automatic Deploys.<br><img src="GithubDeploy.jpg" alt="Deploy On Github" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 3:</u> Clone the git repo(API_CURRENT) on your pc in an new directory(Final).<br><img src="API_CURRENT.jpg" alt="API_CURRENT Directory" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 4:</u> Place the following files in the directory (Final) you just made:<br>Flask_app.py<br>createLinear.py<br>creatLogistic.py<br>a directory named templates with getData.html and index.html inside <br>a directory named uploads<br><img src="directory.jpg" alt="Directory" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 5:</u> Now run flask_app.py via a flask server on your pc:<br>- Open cmd via anaconda.<br>- Cd to your directory (Final).<br>- Run the flask app:<br><img src="RunFlask.jpg" alt="Run Flask" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 6:</u> Go to the displayed url to access your flask app.<br><img src="link.jpg" alt="Link to Flask site" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 7:</u> Select your dataset, in .csv format, by clicking on the green box or drag and drop your file in the box.<br><img src="UploadData.jpg" alt="Select .csv file" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 8:</u> Then click on upload and wait until the file is uploaded then click on create.<br><img src="CreateData.jpg" alt="Upload to server" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 9:</u> On this page you can choose your model type and the data you want to train the model for. After that click on get model.<br><img src="SelectModel.jpg" alt="Select the Model" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 10:</u> Your model is created in your local git director and then committed and pushed to your github account.<br><img src="PushToGIT.jpg" alt="Push to GIT" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 11:</u> When your model and api files are pushed to github Heroku will pull the files and then start building your app, when finished your API will be deployed at the given URL.<br><img src="HerokuPush.jpg" alt="Push to Heroku" class="center"></td>
+	</tr>
+	<tr>
+		<td><u>Step 12:</u> On this site you can insert your parameters and get an prediction via the ML model you created in the flask app.<br><img src="Preditc.jpg" alt="Prediction Website" style="margin-bottom:50px; width:20%" class="center"></td>
+	</tr>
+	</table>
+	<div class="footer">
+		<h3>Created by: Jarni Vanmal; Bram Plessers; Sven Musters</h3>
+	</div>
+
+</body>
+
+</html>
+
